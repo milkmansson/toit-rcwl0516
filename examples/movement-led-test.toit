@@ -2,7 +2,7 @@
 // Use of this source code is governed by a Zero-Clause BSD license that can
 // be found in the EXAMPLES_LICENSE file.
 import gpio
-import ..src.rcwl0516 show *
+import rcwl0516 show *
 
 /**
 Simple example of having a movement event call a Lambda/Callback.

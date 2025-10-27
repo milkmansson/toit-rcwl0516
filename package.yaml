@@ -1,0 +1,5 @@
+name: rcwl0516
+description: Basic Support for RCWL0516 Mocrowave Doppler Radar moement sensor.
+environment:
+  sdk: ^2.0.0-alpha.188
+dependencies:

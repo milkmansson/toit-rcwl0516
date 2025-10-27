@@ -34,10 +34,26 @@
 
 ## Driver:
 Driver simply runs a task to call a callback when the sensor is tripped.  (Could
-also be used for any other binary type output sensor.)  See the examples for the
-best worked examples.  In fact the device is so simple, it doesn't really need
+also be used for any other binary type output sensor.)  See the s folder for the
+best worked example.  In fact the device is so simple, it doesn't really need
 a microcontroller to operate.  This can be demonstrated using the OUT pin, an
 LED and corresponding resistor.
+```Toit
+// Start up the motion detection
+print "Starting Motion Detection..."
+rcwl0516-driver := Rwcl0516 26
+
+// Have the motion detection events turn the LED on or off
+rcwl0516-driver.set-callback --movement=:: led-pin.set 1
+rcwl0516-driver.set-callback --clear=:: led-pin.set 0
+
+// Run a loop and print something if the board shows a movement event.
+// Note that in this case it latches, and clears after the function is called.
+while true:
+  if rcwl0516-driver.motion-detected:
+    print "Motion Detected..."
+  sleep --ms=250
+```
 
 ## Issues
 If there are any issues, changes, or any other kind of feedback, please
