@@ -39,16 +39,21 @@ best worked example.  In fact the device is so simple, it doesn't really need
 a microcontroller to operate.  This can be demonstrated using the OUT pin, an
 LED and corresponding resistor.
 ```Toit
+// Basic Setup Omitted
+
 // Start up the motion detection
 print "Starting Motion Detection..."
 rcwl0516-driver := Rwcl0516 26
 
-// Have the motion detection events turn the LED on or off
+// Have the motion detection events turn the LED on or off.
+// Clear callback won't fire until movement event completely clears (eg movement
+// detection stops for the required 2s timeframe).
 rcwl0516-driver.set-callback --movement=:: led-pin.set 1
 rcwl0516-driver.set-callback --clear=:: led-pin.set 0
 
 // Run a loop and print something if the board shows a movement event.
 // Note that in this case it latches, and clears after the function is called.
+// Will not return true until a NEW motion detection event fires.
 while true:
   if rcwl0516-driver.motion-detected:
     print "Motion Detected..."
