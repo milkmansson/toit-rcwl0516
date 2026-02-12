@@ -41,7 +41,7 @@ LED and corresponding resistor.
 ```Toit
 // Basic Setup Omitted
 
-// Start up the motion detection
+// Start up the motion detection on pin 26:
 print "Starting Motion Detection..."
 rcwl0516-driver := Rwcl0516 26
 
